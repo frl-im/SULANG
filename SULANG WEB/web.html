@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULANG - Minuman Instan dari Belalang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5fff5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2e8b57;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .slogan {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        nav {
+            background-color: #1a5632;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #3c9d70;
+        }
+        
+        .hero {
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #ff6200;
+        }
+        
+        .benefits {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2e8b57;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #ff8c00;
+        }
+        
+        .benefits-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: #2e8b57;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2e8b57;
+        }
+        
+        .products {
+            background-color: #e8f5e9;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2e8b57;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff8c00;
+            margin-bottom: 1rem;
+        }
+        
+        .product-button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .product-button:hover {
+            background-color: #3c9d70;
+        }
+        
+        .testimonials {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 300px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2e8b57;
+        }
+        
+        .about {
+            background-color: #e8f5e9;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            text-align: left;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        footer {
+            background-color: #1a5632;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff8c00;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2e8b57;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .slogan {
+                font-size: 1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SULANG</div>
+        <div class="slogan">Segera Seduh, Segera Sejuk: Minuman Segar yang Membuat Hatimu Senang!</div>
+    </header>
+    
+    <nav>
+        <a href="#home">Beranda</a>
+        <a href="#benefits">Manfaat</a>
+        <a href="#products">Produk</a>
+        <a href="#testimonials">Testimoni</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#contact">Kontak</a>
+    </nav>
+    
+    <section id="home" class="hero">
+        <h1>Nikmati Kesegaran SULANG</h1>
+        <p>Minuman instan inovatif berbahan dasar belalang dengan manfaat kesehatan yang luar biasa! Pelopor minuman protein nabati dari sumber daya terbarukan.</p>
+        <button class="cta-button">BELI SEKARANG</button>
+    </section>
+    
+    <section id="benefits" class="benefits">
+        <h2 class="section-title">Manfaat SULANG</h2>
+        <div class="benefits-container">
+            <div class="benefit-card">
+                <div class="benefit-icon">💪</div>
+                <h3 class="benefit-title">Kaya Protein</h3>
+                <p>Mengandung protein tinggi dari belalang untuk membantu pembentukan otot dan pemulihan setelah aktivitas.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🌿</div>
+                <h3 class="benefit-title">100% Alami</h3>
+                <p>Terbuat dari bahan-bahan alami tanpa pengawet, pewarna buatan, atau bahan kimia berbahaya.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3 class="benefit-title">Energi Instan</h3>
+                <p>Memberikan energi cepat dan tahan lama untuk menunjang aktivitas harian Anda.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🌎</div>
+                <h3 class="benefit-title">Ramah Lingkungan</h3>
+                <p>Produksi menggunakan sumber daya terbarukan dan jejak karbon yang rendah.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products" class="products">
+        <h2 class="section-title">Varian Produk</h2>
+        <div class="products-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/300/200" alt="SULANG Original">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SULANG Original</h3>
+                    <div class="product-price">Rp 15.000</div>
+                    <p>Rasa asli belalang dengan sentuhan manis alami dari gula aren, menyegarkan dan menyehatkan.</p>
+                    <button class="product-button">Beli</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/300/200" alt="SULANG Jeruk">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SULANG Jeruk</h3>
+                    <div class="product-price">Rp 16.000</div>
+                    <p>Kombinasi segar ekstrak belalang dengan jeruk asli untuk sensasi segar yang menyehatkan.</p>
+                    <button class="product-button">Beli</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/300/200" alt="SULANG Jahe">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SULANG Jahe</h3>
+                    <div class="product-price">Rp 18.000</div>
+                    <p>Paduan khasiat belalang dengan kehangatan jahe untuk menjaga daya tahan tubuh Anda.</p>
+                    <button class="product-button">Beli</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">Testimoni Pelanggan</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Awalnya ragu mencoba minuman dari belalang, tapi setelah coba SULANG rasanya enak dan badan jadi berenergi. Sekarang jadi minuman wajib saya setiap pagi!"</p>
+                <p class="testimonial-author">- Budi Santoso</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Sebagai atlet, saya butuh asupan protein tinggi tapi praktis. SULANG jadi solusi tepat! Rasanya enak dan manfaatnya langsung terasa."</p>
+                <p class="testimonial-author">- Siti Rahayu</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"SULANG Jahe jadi andalan keluarga kami di musim hujan. Menghangatkan tubuh dan meningkatkan imunitas. Anak-anak juga suka!"</p>
+                <p class="testimonial-author">- Dian Pratama</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <h2 class="section-title">Tentang SULANG</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="/api/placeholder/500/300" alt="Tentang SULANG">
+            </div>
+            <div class="about-text">
+                <p>SULANG adalah inovasi minuman instan pertama di Indonesia yang memanfaatkan protein belalang sebagai bahan utama. Didirikan pada tahun 2023, SULANG hadir sebagai solusi minuman sehat dengan sumber protein alternatif yang ramah lingkungan.</p>
+                <p>Kami berkomitmen untuk menghadirkan produk berkualitas tinggi dengan standar keamanan pangan internasional. Setiap proses produksi diawasi oleh ahli gizi dan teknologi pangan terkemuka.</p>
+                <p>Visi kami adalah menjadi pionir minuman sehat berbasis protein serangga di Asia Tenggara dan memperkenalkan manfaat konsumsi protein alternatif yang berkelanjutan kepada masyarakat luas.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">SULANG</h3>
+                <p>Segera Seduh, Segera Sejuk: Minuman Segar yang Membuat Hatimu Senang!</p>
+                <div class="social-icons">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">TW</a>
+                    <a href="#">YT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Tautan</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#benefits">Manfaat</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Kontak</h3>
+                <ul class="footer-links">
+                    <li>Email: info@sulang.id</li>
+                    <li>Telepon: +62 812 3456 7890</li>
+                    <li>Alamat: Jl. Protein Sehat No. 123, Jakarta</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 SULANG. Hak Cipta Dilindungi.
+        </div>
+    </footer>
+</body>
+</html>
